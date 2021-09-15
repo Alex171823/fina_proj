@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info about book</title>
+</head>
+<body>
+    <table border="5">
+        <tr>
+            <th>Имя</th>
+            <th>Число страниц</th>
+            <th>Цена</th>
+            <th>Рейтинг</th>
+            <th>Автора</th>
+            <th>Издатель</th>
+            <th>Дата выпуска</th>
+            <th>Осталось в наличии</th>
+        </tr>
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.pages }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.rating }}</td>
+            <td>{{ product.authors }}</td>
+            <td>{{ product.publisher }}</td>
+            <td>{{ product.pubdate }}</td>
+            <td>{{ product.amount }}</td>
+        </tr>
+ </table>
+
+    <p class="price">${{ product.price }}</p>
+    <form action="{% url "cart_add" product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="Add to cart">
+    </form>
+
+</body>
+</html>
