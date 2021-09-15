@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
 from .models import Book
 from django.views.generic.edit import FormView
 from .forms import BookForm

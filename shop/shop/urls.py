@@ -6,5 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('shop_app.urls')),
-    url(r'^cart/', include('cart.urls')),
+    path('cart/', include('cart.urls')),
+    url(r'^orders/', include('orders.urls', namespace='orders')),
 ]
