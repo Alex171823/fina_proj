@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
 
     'django_celery_results',
+    'django_celery_beat',
 
     'bulk_update_or_create',
 ]

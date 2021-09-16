@@ -5,6 +5,7 @@ from .models import Book
 from django.views.generic.edit import FormView
 from .forms import BookForm
 from cart.forms import CartAddProductForm
+from cart.cart import Cart
 
 
 def startpage(request):
@@ -18,7 +19,7 @@ class BookListView(ListView):
 
 def book_detail(request, pk):
     book = get_object_or_404(Book, id=pk)
-    cart_product_form = CartAddProductForm()
+    cart_product_form = CartAddProductForm(product=book, cart=Cart(request))
 
     return render(request, 'book/book_detail.html', {'product': book,
                                                      'cart_product_form': cart_product_form})

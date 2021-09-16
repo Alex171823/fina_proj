@@ -1,7 +1,9 @@
 import requests
 from shop_app.models import Book
+from celery import shared_task
 
 
+@shared_task
 def update():
     print('Starting update from warehouse api for database')
     print('Getting data from api...')

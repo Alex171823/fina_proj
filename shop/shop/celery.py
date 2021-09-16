@@ -23,7 +23,6 @@ def debug_task(self):
 
 
 app.conf.beat_schedule = {
-    # "parsing": {"task": 'celery_app.tasks.parse_quotes',
-    #             "schedule": crontab(minute=0, hour='1,3,5,7,9,11,13,15,17,19,21,23'),
-    #             'args': (['https://quotes.toscrape.com'], 0)}
+    "parsing": {"task": 'shop_app.tasks.update',
+                'schedule': 10.0,}
 }
