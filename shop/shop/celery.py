@@ -24,5 +24,5 @@ def debug_task(self):
 
 app.conf.beat_schedule = {
     "parsing": {"task": 'shop_app.tasks.update',
-                'schedule': 10.0,}
+                'schedule': crontab(minute=0, hour=0)}
 }

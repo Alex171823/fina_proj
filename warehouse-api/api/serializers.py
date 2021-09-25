@@ -1,3 +1,5 @@
+from abc import ABC
+
 from rest_framework import serializers
 
 from .models import Book, Author, Publisher
@@ -19,5 +21,9 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['name', 'pages', 'price', 'rating', 'authors', 'publisher', 'pubdate']
+
+
+class GetRequestSerializer(serializers.Serializer):
+    name = serializers.CharField(required=True)
 
 # user = serializers.HiddenField(default=serializers.CurrentUserDefault())

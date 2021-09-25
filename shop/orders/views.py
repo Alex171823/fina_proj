@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
-from .tasks import send_mail, sent_to_api
+from .tasks import send_mail, send_to_api
 from shop_app.models import Book
 
 
@@ -21,10 +21,10 @@ def order_create(request):
                 # change book amount
                 book = Book.objects.get(name=item['product'].name)
                 book.amount -= item['quantity']
-                book.save
+                book.save()
 
                 # send changes to warehouse
-                sent_to_api(name=item['product'].name)
+                send_to_api(name=item['product'].name)
 
             # очистка корзины
             cart.clear()
