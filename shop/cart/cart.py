@@ -27,7 +27,10 @@ class Cart(object):
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
-            self.cart[product_id]['quantity'] += quantity
+            if self.cart[product_id]['quantity'] < Book.objects.filter(id=product_id).count():
+                self.cart[product_id]['quantity'] += quantity
+            else:
+                pass
         self.save()
 
     def save(self):

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic.list import ListView
 from .models import Book
 from django.views.generic.edit import FormView
@@ -19,10 +19,19 @@ class BookListView(ListView):
 
 def book_detail(request, pk):
     book = get_object_or_404(Book, id=pk)
-    cart_product_form = CartAddProductForm(product=book, cart=Cart(request))
+    cart = Cart(request)
+    form = CartAddProductForm(data=request.POST, product=book, cart=cart)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            cd = form.cleaned_data
+            cart.add(product=book,
+                     quantity=cd['quantity'],
+                     update_quantity=cd['update'])
+            return redirect('cart_detail')
 
     return render(request, 'book/book_detail.html', {'product': book,
-                                                     'cart_product_form': cart_product_form})
+                                                     'cart_product_form': form})
 
 
 class BuyView(FormView):
