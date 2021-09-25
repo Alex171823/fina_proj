@@ -20,9 +20,10 @@ class BookListView(ListView):
 def book_detail(request, pk):
     book = get_object_or_404(Book, id=pk)
     cart = Cart(request)
-    form = CartAddProductForm(data=request.POST, product=book, cart=cart)
+    form = CartAddProductForm(product=book, cart=cart)
 
     if request.method == 'POST':
+        form = CartAddProductForm(data=request.POST, product=book, cart=cart)
         if form.is_valid():
             cd = form.cleaned_data
             cart.add(product=book,

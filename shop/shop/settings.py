@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django_celery_beat',
 
     'bulk_update_or_create',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -78,6 +77,7 @@ TEMPLATES = [
         },
     },
 ]
+# MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 WSGI_APPLICATION = 'shop.wsgi.application'
 

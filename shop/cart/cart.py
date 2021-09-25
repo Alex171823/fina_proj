@@ -16,7 +16,7 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
-    def add(self, product, quantity=1, update_quantity=False):
+    def add(self, product, quantity, update_quantity=False):
         """
         Добавить продукт в корзину или обновить его количество.
         """
@@ -27,7 +27,7 @@ class Cart(object):
         if update_quantity:
             self.cart[product_id]['quantity'] = quantity
         else:
-            if self.cart[product_id]['quantity'] < Book.objects.filter(id=product_id).count():
+            if self.cart[product_id]['quantity'] + quantity <= Book.objects.filter(id=product_id).count():
                 self.cart[product_id]['quantity'] += quantity
             else:
                 pass
