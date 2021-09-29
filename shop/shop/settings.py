@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
 
     'bulk_update_or_create',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

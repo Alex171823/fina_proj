@@ -1,7 +1,8 @@
 {% extends "base.html" %}
-
-    {% block content %}
-        <table border="5">
+{% load bootstrap4 %}
+{% block content %}
+    <p></p>
+        <table>
             <tr>
                 <th>Имя</th>
                 <th>Число страниц</th>
@@ -11,6 +12,7 @@
                 <th>Издатель</th>
                 <th>Дата выпуска</th>
                 <th>Осталось в наличии</th>
+                <th>Картинка</th>
             </tr>
             <tr>
                 <td>{{ product.name }}</td>
@@ -21,14 +23,22 @@
                 <td>{{ product.publisher }}</td>
                 <td>{{ product.pubdate }}</td>
                 <td>{{ product.amount }}</td>
+                <td>
+                      <img src="{{ product.image.url }}" style="max-height:300px">
+                </td>
             </tr>
         </table>
 
-        <p class="price">${{ product.price }}</p>
+        {# Display a form #}
         <form action="{% url "book_detail" product.id %}" method="post">
-            {{ cart_product_form }}
             {% csrf_token %}
-            <input type="submit" value="Add to cart">
+            {% bootstrap_form cart_product_form %}
+
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                    Add to cart
+                </button>
+            {% endbuttons %}
         </form>
 
     {% endblock %}
