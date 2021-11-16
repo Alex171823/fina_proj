@@ -1,5 +1,6 @@
-from django.db import models
 from bulk_update_or_create import BulkUpdateOrCreateQuerySet
+
+from django.db import models
 
 
 class Book(models.Model):
@@ -13,7 +14,6 @@ class Book(models.Model):
     publisher = models.CharField(max_length=255)
     pubdate = models.DateField()
     amount = models.IntegerField()
-    image = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.name} {self.pages} {self.price} {self.rating} {self.publisher} {self.pubdate}, {self.amount}"

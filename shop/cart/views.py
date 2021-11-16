@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
+
 from shop_app.models import Book
+
 from .cart import Cart
 
 

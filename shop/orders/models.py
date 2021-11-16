@@ -1,4 +1,5 @@
 from django.db import models
+
 from shop_app.models import Book
 
 

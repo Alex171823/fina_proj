@@ -1,8 +1,6 @@
-from abc import ABC
-
 from rest_framework import serializers
 
-from .models import Book, Author, Publisher
+from .models import Author, Book, Publisher
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -25,5 +23,3 @@ class BookSerializer(serializers.ModelSerializer):
 
 class GetRequestSerializer(serializers.Serializer):
     name = serializers.CharField(required=True)
-
-# user = serializers.HiddenField(default=serializers.CurrentUserDefault())

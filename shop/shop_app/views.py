@@ -1,11 +1,13 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic.list import ListView
-from .models import Book
-from django.views.generic.edit import FormView
-from .forms import BookForm
-from cart.forms import CartAddProductForm
 from cart.cart import Cart
+from cart.forms import CartAddProductForm
+
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
+
+from .forms import BookForm
+from .models import Book
 
 
 def startpage(request):

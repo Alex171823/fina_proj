@@ -1,10 +1,10 @@
 from random import randint, uniform
 
+from api.models import Author, Book, Publisher
+
 from django.core.management.base import BaseCommand
 
 from faker import Faker
-
-from api.models import Author, Book, Publisher
 
 fake = Faker()
 
@@ -12,11 +12,7 @@ fake = Faker()
 class Command(BaseCommand):
     help = u'Fills database with some data'  # noqa A003
 
-    # fills db with 10 publishers, 15 stores and 20 authors
     def handle(self, *args, **kwargs):
-        # Publisher.objects.all().delete()
-        # Book.objects.all().delete()
-
         # create 5 publishers
         publishers = [Publisher(name=f"Publisher{index}") for index in range(1, 6)]
         Publisher.objects.bulk_create(publishers)
@@ -46,4 +42,4 @@ class Command(BaseCommand):
             author = Author.objects.get(id=randint(1, amount_authors))
             book.authors.add(author)
 
-        self.stdout.write('done')
+        self.stdout.write('db filling done')

@@ -1,9 +1,12 @@
-from django.shortcuts import render
-from .models import OrderItem
-from .forms import OrderCreateForm
 from cart.cart import Cart
-from .tasks import send_mail, send_to_api
+
+from django.shortcuts import render
+
 from shop_app.models import Book
+
+from .forms import OrderCreateForm
+from .models import OrderItem
+from .tasks import send_mail, send_to_api
 
 
 def order_create(request):
@@ -24,13 +27,13 @@ def order_create(request):
                 book.save()
 
                 # send changes to warehouse
-                send_to_api(name=item['product'].name)
-
-            # очистка корзины
-            cart.clear()
+                send_to_api.delay(name=item['product'].name)
 
             # отправка сообщения об успешном заказе
             send_mail.delay(order.id)
+
+            # очистка корзины
+            cart.clear()
 
             return render(request, 'orders/order_created.html',
                           {'order': order})

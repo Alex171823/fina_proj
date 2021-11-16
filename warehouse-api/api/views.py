@@ -1,26 +1,17 @@
 from django.http import JsonResponse
-from rest_framework import viewsets, status
-from rest_framework.decorators import action, api_view
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from rest_framework.response import Response
 
-from .models import Book, Author, Publisher
-from .serializers import BookSerializer, AuthorSerializer, PublisherSerializer, GetRequestSerializer
+from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
+
+from .models import Author, Book, Publisher
+from .serializers import AuthorSerializer, BookSerializer,  GetRequestSerializer, PublisherSerializer
 
 
 class BookModelApi(viewsets.ModelViewSet):
     parser_classes = (MultiPartParser, FormParser, JSONParser)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-
-    # @action(methods=['POST'], detail=True)
-    # def delete_book(self, request):
-    #     request = request.json()
-    #     queryset = Book.objects.filter(name=request['name'])
-    #
-    #     queryset[0].delete()
-    #
-    #     print(f'Book {request["name"]} done')
 
 
 class AuthorModelApi(viewsets.ModelViewSet):

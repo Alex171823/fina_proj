@@ -1,7 +1,5 @@
 from django import forms
-from shop_app.models import Book
-from .cart import Cart
-import requests
+
 
 PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
 

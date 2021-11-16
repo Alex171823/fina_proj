@@ -12,7 +12,6 @@
                 <th>Издатель</th>
                 <th>Дата выпуска</th>
                 <th>Осталось в наличии</th>
-                <th>Картинка</th>
             </tr>
             <tr>
                 <td>{{ product.name }}</td>
@@ -23,9 +22,6 @@
                 <td>{{ product.publisher }}</td>
                 <td>{{ product.pubdate }}</td>
                 <td>{{ product.amount }}</td>
-                <td>
-                      <img src="{{ product.image.url }}" style="max-height:300px">
-                </td>
             </tr>
         </table>
 
