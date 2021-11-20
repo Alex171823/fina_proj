@@ -27,7 +27,7 @@ def order_create(request):
                 book.save()
 
                 # send changes to warehouse
-                send_to_api.delay(name=item['product'].name)
+                send_to_api(name=item['product'].name)
 
             # отправка сообщения об успешном заказе
             send_mail.delay(order.id)

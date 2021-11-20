@@ -11,9 +11,9 @@ def update():
     print('Getting data from api...')                                               # noqa: T001
 
     # get json from wharehouse api
-    authors_data = requests.get('http://127.0.0.1:8000/api/authors/').json()
-    publishers_data = requests.get('http://127.0.0.1:8000/api/publishers/').json()
-    books_data = requests.get('http://127.0.0.1:8000/api/books/').json()
+    authors_data = requests.get('http://127.0.0.1:8080/api/authors/').json()
+    publishers_data = requests.get('http://127.0.0.1:8080/api/publishers/').json()
+    books_data = requests.get('http://127.0.0.1:8080/api/books/').json()
 
     print('Clearing data...')                                                       # noqa: T001
     # clears books json from dublicated and count amount of each type of book
