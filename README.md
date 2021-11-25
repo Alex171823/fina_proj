@@ -4,28 +4,29 @@ This is my final project while learning in the Hillel IT School.
 
 ## Main idea
 
-This repository includes 2 projects: 'shop' and 'warehouse-api'. Warehouse works only as an API to shop.
-Shop, by itself, sometimes updates list of books available in it and for each order sends a signal to warehouse to form a package for customers. 
+This repository includes 2 projects: 'shop' and 'warehouse-api'. Warehouse works only as an API to shop and an admin 
+page for manager who packs orders.
+Shop, by itself, sometimes updates list of books available in it and for each order sends data to warehouse to form a package for customers. 
 
 
 ## Quick Start
 
 To get projects up and running locally on your computer:
-	For each project independently, in project directory:
-		1. Set up the [Python virtual environment](https://docs.python.org/3/library/venv.html#module-venv).
-		2. Assuming you have Python setup, run the following commands:
-		   ```
-		   pip install -r requirements.txt
-		   python manage.py makemigrations
-		   python manage.py migrate
-		   python manage.py loaddata # optional - fills database with some fixtures
-		   python manage.py createsuperuser # Create a superuser (optionally) 
-		   for warehouse-api 'python manage.py runserver 8080'; for shop 'python manage.py runserver 8000'
-		   ```
-		3. run cellery in shop directory
-			```
-			celery -A shop worker -l INFO -B
-			```
+For each project independently, in project directory:
+1. Set up the [Python virtual environment](https://docs.python.org/3/library/venv.html#module-venv).
+2. Assuming you have Python setup, run the following commands:
+```
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py loaddata # optional - fills database with some fixtures
+for warehouse-api 'python manage.py runserver 8080'; for shop 'python manage.py runserver 8000'
+python manage.py createsuperuser # Create a superuser (optionally) 
+```
+3. run celery in shop directory
+```
+celery -A shop worker -l INFO -B
+```
 
 ## Main features
 - Sheduled updating list of books available in shop from warehouse.
@@ -37,4 +38,5 @@ To get projects up and running locally on your computer:
 - Admin page in warehouse project.
 
 ## ATTENTION
-By default all apps run in `DEBUG` mode.
+By default all apps run in `DEBUG` mode. To run project in `DEBUG=FALSE` mode, change settings in manage.py and wsgi.py 
+to `production_settings`.

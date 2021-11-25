@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-%52633#q7mf01fo=-7jo749%0q3!k*7jp859i2&t+5#(3z4)(g')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: update this when you have the production host
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -130,6 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -139,7 +140,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'PAGE_SIZE': 10,
 }

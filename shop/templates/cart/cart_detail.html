@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
     {% block content %}
-        <h1>Your shopping cart</h1>
+        <h1>Ваша корзина</h1>
         <table class="cart">
             <thead>
             <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Remove</th>
-                <th>Unit price</th>
-                <th>Total price</th>
+                <th>Книга</th>
+                <th>Количество</th>
+                <th>Убрать</th>
+                <th>Цена за штуку</th>
+                <th>Общая стоимость</th>
             </tr>
             </thead>
             <tbody>
@@ -18,23 +18,23 @@
                     <tr>
                         <td>{{ product.name }}</td>
                         <td>{{ item.quantity }}</td>
-                        <td><a href="{% url "cart_remove" product.id%}">Remove</a></td>
+                        <td><a href="{% url "cart_remove" product.id%}">Убрать</a></td>
                         <td class="num">${{ item.price }}</td>
                         <td class="num">${{ item.total_price }}</td>
                     </tr>
                 {% endwith %}
             {% endfor %}
             <tr class="total">
-                <td>Total</td>
+                <td>Всего</td>
                 <td colspan="4"></td>
                 <td class="num">${{ cart.get_total_price }}</td>
             </tr>
             </tbody>
         </table>
         <p class="text-left">
-            <a href="{% url "books_list" %}" class="button light">Continue shopping</a>
+            <a href="{% url "books_list" %}" class="button light">Продолжить покупки</a>
             <a href="{% url "orders:order_create" %}" class="button">
-                Make order
+                Сделать заказ
             </a>
         </p>
     {% endblock %}
