@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 
 from .models import Author, Book, Publisher
-from .serializers import AuthorSerializer, BookSerializer,  GetRequestSerializer, PublisherSerializer
+from .serializers import AuthorSerializer, BookSerializer, GetRequestSerializer, PublisherSerializer
 
 
 class BookModelApi(viewsets.ModelViewSet):

@@ -3,10 +3,8 @@ from cart.forms import CartAddProductForm
 
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 
-from .forms import BookForm
 from .models import Book
 
 
@@ -35,12 +33,3 @@ def book_detail(request, pk):
 
     return render(request, 'book/book_detail.html', {'product': book,
                                                      'cart_product_form': form})
-
-
-class BuyView(FormView):
-    form_class = BookForm
-    template_name = 'book/buy_book.html'
-
-    def form_valid(self, form):
-        # sends email and post to warehouse
-        return super().form_valid(form)

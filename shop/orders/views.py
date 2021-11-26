@@ -29,10 +29,10 @@ def order_create(request):
                 # send changes to warehouse
                 send_to_api(name=item['product'].name)
 
-            # отправка сообщения об успешном заказе
+            # send success message
             send_mail.delay(order.id)
 
-            # очистка корзины
+            # clear cart
             cart.clear()
 
             return render(request, 'orders/order_created.html',

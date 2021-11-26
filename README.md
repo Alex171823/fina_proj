@@ -36,6 +36,7 @@ celery -A shop worker -l INFO -B
 - Management commands for filling database with fake data and manual updating data from warehouse in shop project.
 - DRF-based API in warehouse.
 - Admin page in warehouse project.
+- Logging 
 
 ## ATTENTION
 By default all apps run in `DEBUG` mode. To run project in `DEBUG=FALSE` mode, change settings in manage.py and wsgi.py 
